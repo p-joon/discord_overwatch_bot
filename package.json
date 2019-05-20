@@ -1,0 +1,10 @@
+{
+	"name": "Overwatch Tools",
+	"version": "1.0.1",
+	"description": "Discord tools for Overwatch Players",
+	"main": "bot.js",
+	"author": "Joon#9701",
+	"dependencies": {
+		"discord.js": "^11.5.0"
+	}
+}

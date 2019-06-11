@@ -2,7 +2,6 @@ const AUTH = require('./auth.json');
 const Discord = require('discord.js');
 const client = new Discord.Client();
 
-
 client.on('ready', () => {
 	console.log("Connected as " + client.user.tag);
 })
@@ -13,7 +12,7 @@ client.on('message', inputMessage => {
 		return;
 	}
 
-    if (inputMessage.content.startswith(">")) {
+    if (inputMessage.content.startsWith(">")) {
 		processCommand(inputMessage);
 	}
 })
@@ -24,8 +23,26 @@ client.on('message', inputMessage => {
  * command is valid.
  */
 function processCommand(inputMessage) {
-    let fullCommand = inputMessage.content.substr(1);
-	let splitCommnd = fullCommand.split(" ");
+    let fullCommand  = inputMessage.content.substr(1);
+	let splitCommand = fullCommand.split(" ");
+	let retVal = "";
+
+	const inputCommand = splitCommand[0];
+	const inputArgs    = splitCommand.slice(1);
+
+	// READ https://hackernoon.com/rethinking-javascript-eliminate-the-switch-statement-for-better-code-5c81c044716d
+	switch(inputCommand) {
+		case "help":
+          retVal = "`!help` detected";
+		  break;
+		default:
+		  break;
+	}
+
+    console.log("==========================")
+	console.log("COMMAND : " + inputCommand);
+	console.log("ARGS    : " + inputArgs);
+	console.log("RETURN  : " + retVal);
 }
 
 client.login(AUTH.TOKEN);

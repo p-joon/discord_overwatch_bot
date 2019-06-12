@@ -1,3 +1,17 @@
+//TODO
+// CODE:
+// [-] loose coupling
+// [-] optimize
+// [-] clean
+//
+// TASKS:
+// [-] add ``
+// [-] add `stat` command functionalities
+//   - consider renaming it to qp since `comp` command already exists
+//   - or have `stat` (cumulative), `qp`, `comp`
+// [-] add `updates` command functionalities
+// [-] add `comp` command functionalities
+
 const AUTH = require('./auth.json');
 const Discord = require('discord.js');
 const XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
@@ -27,9 +41,9 @@ client.on('message', inputMessage => {
 })
 
  /**
-  * processCommand - Any message starting with "ow." will be passed to this
-  * function. This function validates the number of argumetns in the input
-  * command, and executes them to helper functions accordingly.
+  * Any message starting with "ow." will be passed to this function.
+  * This function validates the number of argumetns in the input command, and
+  * executes them to helper functions accordingly.
   *
   * @param  {Discord.Message} inputMessage message the user typed
   */
@@ -57,7 +71,6 @@ function processCommand(inputMessage) {
         default:
             break;
     }
-
     inputMessage.channel.send(retVal.content);
 }
 
@@ -108,8 +121,14 @@ function processCommand_stat(splitCommand, retVal) {
 }
 
 
+/**
+ * var HttpClient - description
+ *
+ * @return {type}  description
+ */
 var HttpClient = function() {
 	this.get = function(inputURL, callbackFunc) {
+
 		let xmlhttp = new XMLHttpRequest();
 
 		xmlhttp.onreadystatechange = function() {
@@ -124,7 +143,6 @@ var HttpClient = function() {
 
 		xmlhttp.open("GET", "http://macrogenusa.com/", false);
 		xmlhttp.send();
-
 	}
 }
 
